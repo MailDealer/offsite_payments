@@ -11,13 +11,15 @@ module OffsitePayments #:nodoc:
         Notification.new(raw_post)
       end
 
-      def self.generate_signature_string(params, path, secret)
-        sorted_params = params.sort_by{|k,v| k.to_s}.collect{|k,v| v}
-        [path, sorted_params, secret].flatten.compact.join(';')
-      end
+      module Common
+        def self.generate_signature_string(params, path, secret)
+          sorted_params = params.sort_by{|k,v| k.to_s}.collect{|k,v| v}
+          [path, sorted_params, secret].flatten.compact.join(';')
+        end
 
-      def self.generate_signature(params, path, secret)
-        Digest::MD5.hexdigest(generate_signature_string(params, path, secret))
+        def self.generate_signature(params, path, secret)
+          Digest::MD5.hexdigest(generate_signature_string(params, path, secret))
+        end
       end
 
       class Helper < OffsitePayments::Helper
