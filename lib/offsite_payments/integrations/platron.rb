@@ -51,11 +51,13 @@ module OffsitePayments #:nodoc:
         def initialize(post, options = {})
           @options = options
           @params = post.deep_dup
+          params.delete('controller')
+          params.delete('action')
           @signature = params.delete('pg_sig')
         end
 
         def complete?
-          params['pg_result']
+          params['pg_result'].to_s == '1'
         end
 
         def order_id
@@ -142,7 +144,7 @@ module OffsitePayments #:nodoc:
           salt = rand(36**15).to_s(36)
           xml = ""
           doc = Builder::XmlMarkup.new(:target => xml)
-          sign = Platron.generate_signature({:pg_status => 'ok', :pg_salt => salt}, path, secret)
+          sign = Common.generate_signature({:pg_status => 'ok', :pg_salt => salt}, path, secret)
           doc.response do
             doc.pg_status 'ok'
             doc.pg_salt salt
