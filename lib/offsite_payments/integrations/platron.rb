@@ -48,8 +48,9 @@ module OffsitePayments #:nodoc:
       end
 
       class Notification < OffsitePayments::Notification
-        def initialize(*args)
-          super
+        def initialize(post, options = {})
+          @options = options
+          @params = post.deep_dup
           @signature = params.delete('pg_sig')
         end
 
