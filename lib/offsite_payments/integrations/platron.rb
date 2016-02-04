@@ -134,7 +134,7 @@ module OffsitePayments #:nodoc:
         end
 
         def acknowledge(authcode = nil)
-          signature == Platron.generate_signature(params, path, secret)
+          signature == Common.generate_signature(params, path, secret)
         end
 
         def success_response(path,secret)
