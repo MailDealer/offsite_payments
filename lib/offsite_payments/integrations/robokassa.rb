@@ -84,7 +84,7 @@ module OffsitePayments #:nodoc:
           super
         end
 
-        mapping :account, 'MrchLogin'
+        mapping :account, 'MerchantLogin'
         mapping :amount, 'OutSum'
         mapping :currency, 'IncCurrLabel'
         mapping :order, 'InvId'
