@@ -128,6 +128,14 @@ module OffsitePayments #:nodoc:
           params['pg_amount']
         end
 
+        def recurring_profile
+          params['pg_recurring_profile']
+        end
+
+        def recurring_lifetime
+          params['pg_recurring_lifetime']
+        end
+
         def secret
           @options[:secret]
         end
