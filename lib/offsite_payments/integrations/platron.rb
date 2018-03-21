@@ -129,11 +129,11 @@ module OffsitePayments #:nodoc:
         end
 
         def recurring_profile
-          params['pg_recurring_profile']
+          params['pg_recurring_profile_id']
         end
 
         def recurring_lifetime
-          params['pg_recurring_lifetime']
+          params['pg_recurring_profile_expiry_date']
         end
 
         def secret
