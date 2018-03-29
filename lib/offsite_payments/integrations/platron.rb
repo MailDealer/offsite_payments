@@ -136,6 +136,10 @@ module OffsitePayments #:nodoc:
           params['pg_recurring_profile_expiry_date']
         end
 
+        def card
+          params['pg_card_pan']
+        end
+
         def secret
           @options[:secret]
         end
