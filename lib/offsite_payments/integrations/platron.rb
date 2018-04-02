@@ -140,6 +140,17 @@ module OffsitePayments #:nodoc:
           params['pg_card_pan']
         end
 
+        def card_brand
+          case params['pg_card_brand']
+          when 'VI'
+            'visa'
+          when 'CA'
+            'mastercard'
+          else
+            nil
+          end
+        end
+
         def secret
           @options[:secret]
         end
