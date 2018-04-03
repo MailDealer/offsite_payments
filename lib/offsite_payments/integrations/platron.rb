@@ -146,6 +146,8 @@ module OffsitePayments #:nodoc:
             'visa'
           when 'CA'
             'mastercard'
+          when 'MI'
+            'mir'
           else
             nil
           end
